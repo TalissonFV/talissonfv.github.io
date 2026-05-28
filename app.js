@@ -156,8 +156,9 @@ updateGlowPosition();
 const typingText = document.getElementById('typing-text');
 const titles = [
     "Desenvolvedor Web Fullstack Pleno",
-    "Especialista em Node, Vue & C#",
-    "Modelagem Avançada de Grafos (Neo4j)",
+    "Especialista em Node & Vue",
+    "Modelagem de Banco de Dados em Grafos (Neo4j)",
+    "Conhecimentos sólidos em React, C# e Java",
     "Focado em Escalabilidade e Performance"
 ];
 
@@ -264,5 +265,24 @@ if (navToggle) {
             navLinksContainer.style.padding = '2rem';
             navLinksContainer.style.borderBottom = '1px solid var(--border-color)';
         }
+    });
+}
+
+/* -------------------------------------------------------------
+   CONTACT FORM HANDLER (MAILTO INTEGRATION)
+   ------------------------------------------------------------- */
+const contactForm = document.getElementById('portfolio-contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('form-name').value;
+        const email = document.getElementById('form-email').value;
+        const message = document.getElementById('form-message').value;
+        
+        const subject = encodeURIComponent(`Conexão Portfólio: ${name}`);
+        const body = encodeURIComponent(`Olá Talisson,\n\nRecebi uma mensagem de contato do seu portfólio:\n\nNome/Empresa: ${name}\nE-mail de retorno: ${email}\n\nMensagem:\n${message}\n\n--\nEnviado via portfólio.`);
+        
+        window.location.href = `mailto:talissonfv@gmail.com?subject=${subject}&body=${body}`;
     });
 }
